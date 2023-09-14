@@ -1,0 +1,710 @@
+WEEK -1 Date:
+Aim: Write a java program to find the Fibonacci series using recursive and non
+recursivefunctions
+Program:
+class fib
+{
+int a,b,c;
+void nonrecursive(int n) //Non recursive function to find the Fibonacci series.
+{
+a=0;
+b=1;
+System.out.print(a+ "" + b);
+c=a+b;
+while(c<=n)
+{
+System.out.print(c);
+a=b;
+b=c;
+c=a+b;
+}
+}
+int recursive(int n) // Recursive function to find the Fibonacci series.
+{
+if(n==0)
+return (0);
+if(n==1)
+return (1);
+else
+return(recursive(n-1)+recursive(n-2));
+}
+}
+ // Class that calls recursive and non recursive functions
+class fib1
+{
+public static void main(String args[])
+{
+int n=5;
+System.out.println("The Fibonacci series using non recursive is");
+ // Creating object for the fib class.
+fib f=new fib();
+ // Calling non recursive function oF fib class.
+f.nonrecursive(n);
+System.out.println("\n The Fibonacci series using recursive is");
+for(int i=0;i<=n;i++)
+{
+ // Calling recursive function of fib class.
+int F1=f.recursive(i);
+System.out.print(F1);
+}
+}
+}
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------
+
+
+WEEK -2 Date:
+Aim: Write a java program to multiply two given matrices.
+public class MatrixEx
+{
+public static void main(String args[])
+{
+//creating two matrices
+int a[][]={{1,1,1},{2,2,2},{3,3,3}};
+int b[][]={{1,1,1},{2,2,2},{3,3,3}};
+
+//creating another matrix to store the multiplication of two matrices
+int c[][]=new int[3][3]; //3 rows and 3 columns
+
+//multiplying and printing multiplication of 2 matrices
+for(int i=0;i<3;i++)
+{
+for(int j=0;j<3;j++)
+{
+c[i][j]=0;
+for(int k=0;k<3;k++)
+{
+c[i][j]+=a[i][k]*b[k][j];
+} //end of k loop
+System.out.print(c[i][j]+" "); //printing matrix element
+} //end of j loop
+System.out.println(); //new line
+}
+}
+}
+
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK -3 Date:
+Aim: Write a java program for Method overloading and Constructor overloading
+Method overloading:
+import java.io.*;
+class MethodOverloadingEx {
+ static int add(int a, int b)
+ {
+ return a + b;
+ }
+ static int add(int a, int b, int c)
+ {
+ return a + b + c;
+ }
+ public static void main(String args[])
+ {
+ System.out.println("add() with 2 parameters");
+ System.out.println(add(4, 6));
+
+ System.out.println("add() with 3 parameters");
+ System.out.println(add(4, 6, 7));
+ }
+}
+
+
+
+Constructor overloading
+public class Student {
+//instance variables of the class
+int id;
+String name;
+
+Student(){
+System.out.println("this a default constructor");
+}
+Student(int i, String n){
+id = i;
+name = n;
+}
+
+public static void main(String[] args) {
+//object creation
+Student s = new Student();
+System.out.println("\nDefault Constructor values: \n");
+System.out.println("Student Id : "+s.id + "\nStudent Name : "+s.name);
+
+System.out.println("\nParameterized Constructor values: \n");
+Student student = new Student(10, "Kalpana");
+System.out.println("Student Id : "+student.id + "\nStudent Name : "+student.name);
+}
+} 
+
+----------------------------------------------------------------------------------------------------------------
+
+
+WEEK - 4 Date:
+Write a java program to display the employee details using Scanner class
+import java.util.*;
+class EmployeeDetails
+{
+public static void main(String args[])
+{
+System.out.println("enter name,id,age,salary");Scanner sc=new Scanner(System.in);
+String n=sc.next();int i=sc.nextInt(); int a=sc.nextInt();
+float s=sc.nextFloat();
+System.out.println("name is"+n+"idis"+i+"ageis"+a+"salaryis"+s);
+}
+}
+
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK - 5 Date:
+Aim: Write a java program that checks whether a given string is palindrome or not
+Program:
+// Class to find whether string is palindrome or not.
+class palindrome
+{
+public static void main(String args[])
+{
+// Accepting the string at run time.
+String s=args[0];
+String s1="";
+int le,j;
+// Finding the length of the string.
+le = s.length();
+// Loop to find the reverse of the string.
+for(j=le-1;j>=0;j--)
+{
+s1=s1+s.charAt(j);
+}
+// Condition to find whether two strings are equal and display the message.
+if(s.equals(s1))
+System.out.println("String "+s+" is palindrome"); else
+System.out.println("String "+s+" is not palindrome");
+}
+}
+
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 6A Date:
+Write a java program to represent Abstract class with example Program
+abstract class Bank{
+abstract int getRateOfInterest();
+}
+class SBI extends Bank
+{
+int getRateOfInterest()
+{
+return 7;
+}
+}
+class PNB extends Bank
+{
+int getRateOfInterest(){return 8;}
+}
+
+class TestBank{
+public static void main(String args[]){
+Bank b;
+b=new SBI();
+System.out.println("Rate of Interest is: "+b.getRateOfInterest()+" %");
+b=new PNB();
+System.out.println("Rate of Interest is: "+b.getRateOfInterest()+" %");
+}
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 6B Date:
+Write a java program to implement Interface using extends keyword
+class Person
+ {
+ String name;
+ Person(String n)
+ {
+ name = "Person: " + n;
+ }
+}
+interface Mother
+ {
+ public void FeedChildren();
+ }
+interface Wife
+ {
+ public void CallHusband();
+ }
+class WifeAndMother extends Person implements Wife, Mother
+{
+ WifeAndMother(String n)
+ {
+ super(n);
+ name = "Wife and mother: " + n;
+ }
+public void FeedChildren()
+ {
+ System.out.println(name + " is feeding the children.");
+ }
+public void CallHusband()
+ {
+ System.out.println(name + " is calling her husband.");
+ }
+}
+class Test
+{
+ public static void main(String args[])
+ {
+ Person p = new Person("SreeRam");
+ WifeAndMother w = new WifeAndMother("Seetha");
+ System.out.println("p is a " + p.name + " ");
+ System.out.println("w is a " + w.name);
+ w.FeedChildren();
+ w.CallHusband();
+ } }
+
+
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 7A Date:
+Write a java program to create inner classes
+class A
+{
+int
+a=10;
+void
+display(
+)
+{
+B
+b=new
+B();
+b.show(
+);
+}
+class B
+{
+int
+b=20;
+void
+show(
+)
+{
+System.out.println(" a value is " +a);
+System.out.println(" b value is " +b);
+}
+}
+}
+class InnerDemo
+{
+public static void main(String args[])
+{
+A
+a=new
+A( );
+a.display( );
+}
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 7B Date:
+Write a java program to create user defined package
+A.java
+package pack;
+public class A
+{
+public void msg()
+{
+System.out.println("Hello");
+}
+}
+B.java
+import pack.A;
+class B
+{
+public static void main(String args[])
+{
+A obj = new A();
+obj.msg();
+}
+}
+
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 8A Date:
+Write a java program for creating multiple catch blocks
+public class MultipleCatchBlocks { public static void main(String[ ] args)
+{
+try
+{
+int a[ ]=new
+int[5];
+a[5]=30/0;
+ }
+catch(ArithmeticException e)
+{
+System.out.println("Arithmetic Exception occurs");
+}
+catch(ArrayIndexOutOfBoundsException e)
+{
+System.out.println("ArrayIndexOutOfBounds Exception occurs");
+}
+catch(Exception e)
+{
+System.out.println("Parent Exception occurs");
+}
+System.out.println("rest of the code");
+}
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 8B Date:
+Write a java program for producer and consumer problem using Threads
+class InterThreadDemo
+{
+public static void main(String args[])
+{
+Producer p1=new Producer();
+Consumer c1=new Consumer(p1);
+Thread t1=new Thread(p1);
+Thread t2=new Thread(c1);
+t2.start();
+t1.start();
+}
+}
+class Producer extends Thread
+{
+StringBuffer sb;
+Producer()
+{
+sb=new StringBuffer();
+}
+public void run()
+{
+synchronized(sb)
+{
+for(int i=0;i<=10;i++)
+{
+try
+{
+sb.append(i+":");
+Thread.sleep(1000);
+System.out.println("appending");
+}
+catch(InterruptedException e)
+{
+System.out.println(e);
+}
+}
+sb.notify();
+}
+}
+}
+class Consumer extends Thread
+{
+Producer prod;
+Consumer(Producer prod)
+{
+this.prod=prod;
+}
+public void run()
+{
+synchronized(prod.sb)
+{
+try
+{
+prod.sb.wait();
+}
+catch(Exception e)
+{
+System.out.println(e);
+}
+System.out.println(prod.sb);
+}
+}
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 9 Date:
+Write a Java program that implements a multi-thread application that has three
+threads
+class Thread1 extends Thread
+{
+public void run()
+{
+for(int i=0;i<=5;i++)
+{
+System.out.println("Thread1:"+ i);
+}
+}
+}
+class Thread2 extends Thread
+{
+public void run()
+{
+for(int j=0;j<=5;j++)
+{
+System.out.println("Thread2:"+ j);
+}
+}
+}
+class Thread3 extends Thread
+{
+public void run()
+{
+for(int k=0;k<=5;k++)
+{
+System.out.println("Thread3:"+ k);
+} } }
+class MultiThreadDemo
+{
+public static void main(String args[])
+{
+Thread1 t1=new
+Thread1(); Thread2
+t2=new Thread2();
+Thread3 t3=new
+Thread3();t1.start();
+t2.start();
+t3.start();
+for(int i=0;i<=5;i++)
+{
+System.out.println("main thread:"+ i);
+}
+} }
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 10A Date:
+Write a java program to display File class properties
+import java.io.*;
+public class FileDemo2 {
+public static void main(String[] args)
+{
+String fname=args[0];
+File f=new File(fname);
+System.out.println("path: "+f.getPath());
+System.out.println("parent: "+f.getAbsolutePath());
+System.out.println("parent: "+f.getParent());
+System.out.println("exits: "+f.exists());
+if(f.exists())
+{
+System.out.println("isWritable: "+f.canWrite());
+System.out.println("isReadable: "+f.canRead());
+System.out.println("isDirectory: "+f.isDirectory());
+System.out.println("size of the file: "+f.length());
+}
+}
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 10B Date:
+Write a java program to represent ArrayList class
+import java.util.*;
+class TestJavaCollection
+{
+public static void main(String args[ ])
+{
+ArrayList<String> list=new ArrayList<String>(); //Creating arraylist
+list.add("Kalpana"); //Adding object in arraylist
+list.add("Venu");
+list.add("Suneetha");
+list.add("Gayatri");
+ //Traversing list through Iterator
+Iterator itr=list.iterator();
+while(itr.hasNext())
+{
+System.out.println(itr.next());
+}
+}
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 10C Date:
+Write a Java program loads phone no, name from a text file using hash table
+Aim: Implement a program to display the content of a text file where the data is organized as
+one line per record and each field in a record are separated by a whitespace (\\s means 0 or
+more repetitions of any whitespace character. It takes a name or phone number as input and
+prints the corresponding other value from the hash table.
+Program:
+import java.util.*;
+import java.io.*;
+public class Hashtbl {
+public static void main(String[] args)
+{
+try
+{
+FileInputStream fs = new FileInputStream("E:\\kalpana\\ph.txt");
+Scanner sc = new Scanner(fs).useDelimiter("\\s+");
+Hashtable<String, String> ht = new Hashtable<String, String>();
+String[] arrayList;
+String a;
+System.out.println("HASH TABLE IS");
+System.out.println("--------------------------");
+System.out.println("KEY : VALUE");
+while (sc.hasNext())
+{
+a = sc.nextLine();
+arrayList = a.split("\\s+");
+ht.put(arrayList[0], arrayList[1]);
+System.out.println(arrayList[0] + ":" + arrayList[1]);
+}
+System.out.println("----MENU------");
+System.out.println("----1.Search by Name------");
+System.out.println("----2.Search by Mobile------");
+System.out.println("----3.Exit------");
+String opt = "";
+String name, mobile;
+Scanner s = new Scanner(System.in);
+while (opt != "3")
+{
+System.out.println("Enter Your Option 1,2,3");
+opt = s.next();
+switch (opt)
+{
+case "1":
+{
+System.out.println("Enter Name");
+name = s.next();
+if (ht.containsKey(name))
+{
+System.out.println("Mobile is " + ht.get(name));
+}
+else
+{
+System.out.println("Not Found");
+}
+}
+break;
+case "2":
+{
+System.out.println("Enter mobile");
+mobile = s.next();
+if (ht.containsValue(mobile)) {
+for (@SuppressWarnings("rawtypes") Map.Entry e : ht.entrySet()) {
+if (mobile.equals(e.getValue())) {
+System.out.println("Name is " + e.getKey());
+}
+}
+}
+else
+{
+System.out.println("Not Found");
+}
+}
+break;
+case "3":
+{
+opt = "3";
+System.out.println("Menu Successfully Exited");
+}
+break;
+default:
+System.out.println("Choose Option betwen 1 and Three");
+break;
+} } }
+catch (Exception ex) {
+System.out.println(ex.getMessage());
+} } }
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 11 Date:
+Write an applet program that displays a simple message
+import java.awt.*;
+import java.applet.*;
+/*
+<applet code="FirstApplet" width=200 height=300>
+</applet>*/
+public class FirstApplet extends Applet
+{
+public void init()
+{
+setBackground(Color.red);
+}
+public void paint(Graphics g)
+{
+g.drawString("this is first applet",50,30);
+showStatus("welcome");
+}
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 12A Date:
+Write a Java program compute factorial value using Applet
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+/*
+<applet code="FactorialApplet" width=300 height=300>
+</applet>
+*/
+public class FactorialApplet extends Applet implements ActionListener
+{
+Label L1,L2;
+TextField T1,T2;
+Button B1;
+public void init()
+{
+setLayout(new FlowLayout(FlowLayout.LEFT));
+L1=new Label("enter the value");
+add(L1);
+T1=new TextField(10);add(T1);
+L2=new Label("factorial value is");
+add(L2);
+T2=new TextField(10);add(T2);
+B1=new Button("compute");
+add(B1);
+B1.addActionListener(this);
+}
+public void actionPerformed(ActionEvent e)
+{
+if(e.getSource()==B1)
+{
+int value=Integer.parseInt(T1.getText());
+int fact=factorial(value);
+T2.setText(String.valueOf(fact));
+}
+}
+int factorial(int n)
+{
+if(n==0)return 1;else
+return n*factorial(n-1);
+}
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+WEEK – 12B Date:
+Write a program for passing parameters using Applet
+import java.awt.*; import java.applet.*;
+/*
+<applet code="MyApplet" width=200 height=300>
+<param name="t1" value="Ravi">
+<param name="t2" value="102">
+</applet>
+*/
+public class MyApplet extends Applet
+{
+String n; String id;
+public void init()
+{
+n=getParameter("t1");
+id=getParameter("t2");
+}
+public void paint(Graphics g)
+{
+g.drawString("name is"+n,100,100);
+g.drawString("id is"+id,100,150);
+}
+}
